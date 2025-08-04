@@ -14,6 +14,12 @@ def main():
     # Initialize pygame
     pygame.init()
 
+    # Create Game clock
+    clock = pygame.time.Clock()
+
+    # dt variable set to 0
+    dt = 0
+
     # Create the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -23,6 +29,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            dt = clock.tick(60)/1000
+
 
         # Fill screen with black
         screen.fill("black")
