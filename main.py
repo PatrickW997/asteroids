@@ -42,6 +42,9 @@ def main():
         # Draw Player every frame
         player.draw(screen)
 
+        # update player movement
+        player.update(dt)
+
         # Refresh the screen
         pygame.display.flip()
 
