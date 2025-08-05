@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import *
 
 
 
@@ -23,6 +24,8 @@ def main():
     # Create the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    player = Player(x = SCREEN_WIDTH/2, y = SCREEN_HEIGHT/2)
+
     # Game loop
     while True:
         # Handle events (makes close button work)
@@ -31,9 +34,11 @@ def main():
                 return
             dt = clock.tick(60)/1000
 
-
         # Fill screen with black
         screen.fill("black")
+
+        # Draw Player every frame
+        player.draw(screen)
 
         # Refresh the screen
         pygame.display.flip()
