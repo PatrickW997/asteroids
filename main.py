@@ -24,15 +24,15 @@ def main():
     # Create the screen
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    player = Player(x = SCREEN_WIDTH/2, y = SCREEN_HEIGHT/2)
-
-
     # game groups
     updateable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
 
+    # adding Player class to groups
     Player.containers = (updateable, drawable)
 
+    # create the player as Player Object
+    player = Player(x = SCREEN_WIDTH/2, y = SCREEN_HEIGHT/2)
 
     # Game loop
     while True:
@@ -47,8 +47,9 @@ def main():
         # Fill screen with black
         screen.fill("black")
 
-        # Draw Player every frame
-        drawable.draw(screen)
+        # Draw every drawable every frame
+        for drawable_object in drawable:
+            drawable_object.draw(screen)
 
         # update player movement
         updateable.update(dt)
