@@ -26,6 +26,14 @@ def main():
 
     player = Player(x = SCREEN_WIDTH/2, y = SCREEN_HEIGHT/2)
 
+
+    # game groups
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updateable, drawable)
+
+
     # Game loop
     while True:
         # Handle events (makes close button work)
@@ -40,10 +48,10 @@ def main():
         screen.fill("black")
 
         # Draw Player every frame
-        player.draw(screen)
+        drawable.draw(screen)
 
         # update player movement
-        player.update(dt)
+        updateable.update(dt)
 
         # Refresh the screen
         pygame.display.flip()
