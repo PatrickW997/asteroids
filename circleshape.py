@@ -18,7 +18,7 @@ class CircleShape(pygame.sprite.Sprite):
         pass
 
     def update(self, dt):
-        # sub-classes must override
+        self.position += self.velocity * dt
         pass
 
     def collides_with(self, other):
