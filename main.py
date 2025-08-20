@@ -67,7 +67,7 @@ def main():
         updateable.update(dt)
 
         # check for colision
-        for asteroid_object in asteroids:
+        for asteroid_object in list(asteroids):     # create a copy list of asteroids, to prevent issues in mutating, while iterating over it
             if player.collides_with(asteroid_object):
                 print("Game over!")
                 sys.exit()
@@ -75,7 +75,12 @@ def main():
             for shot in shots:
                 if asteroid_object.collides_with(shot):
                     shot.kill()
-                    asteroid_object.kill()
+                    split_result = asteroid_object.split()
+
+                    if split_result:
+                        asteroid1, asteroid2 = split_result
+                        asteroids.add(asteroid1, asteroid2)
+                        break                       # make sure to break the loop immeadeatly to not split the same asteroid several times
 
         # Refresh the screen
         pygame.display.flip()
